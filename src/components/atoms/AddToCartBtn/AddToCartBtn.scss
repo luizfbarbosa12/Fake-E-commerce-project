@@ -1,0 +1,10 @@
+@import "../../../styles/variables";
+
+.add-to-cart {
+    height: 38px;
+    width: 38px;
+    border-radius: $s-margin;
+    background-color: $accent-color;
+    border: none;
+    cursor: pointer;
+  }
