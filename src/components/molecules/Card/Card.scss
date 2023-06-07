@@ -1,0 +1,51 @@
+@import "../../../styles/variables";
+
+.card-wrapper {
+  width: 17.25rem;
+  border: 1px solid black;
+  position: relative;
+
+  .see-details {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    cursor: pointer;
+    visibility: hidden;
+    border: 1px solid red;
+    padding: $standard-padding;
+    z-index: 2;
+  }
+
+  .product-image {
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &:hover + .see-details,
+    .see-details:hover {
+      visibility: visible;
+    }
+  }
+}
+
+
+.product-data {
+  display: flex;
+  flex-direction: column;
+  gap: $xs-margin;
+}
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: $xs-padding $s-padding;
+}
+
+.add-to-cart {
+  height: 38px;
+  width: 38px;
+  border-radius: $s-margin;
+  background-color: $accent-color;
+  border: none;
+  cursor: pointer;
+}
