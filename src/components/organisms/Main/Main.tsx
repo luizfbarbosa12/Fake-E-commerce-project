@@ -10,7 +10,7 @@ const Main = () => {
   const { data } = useContext(ProductsContext);
 
   return (
-    <div className="wrapper">
+    <div className="main-wrapper ">
       <h2>Featured products</h2>
       <CardsContainer>
         {data && data.states && data.states?.products ? (

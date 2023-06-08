@@ -28,7 +28,7 @@ const CategoryPage = () => {
   }, [params.category]);
 
   return (
-    <div className="wrapper">
+    <div className="category-wrapper">
       <h1>
         Everything in{" "}
         {params?.category?.charAt(0).toUpperCase() + params?.category?.slice(1)}

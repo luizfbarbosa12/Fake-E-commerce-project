@@ -9,3 +9,7 @@ export const goToCategoryPage = (navigate: NavigateFunctionType, category: strin
 export const goToHomePage = (navigate: NavigateFunctionType) => {
     navigate('/')
 }
+
+export const goToProductDetails = (navigate: NavigateFunctionType, id: number | undefined) => {
+    navigate(`/productDetails/${id}`)
+}

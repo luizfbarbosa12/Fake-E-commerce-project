@@ -7,7 +7,7 @@ import carousel2 from "../../../assets/carousel2.jpg";
 const CarouselComponent = () => {
   return (
     <div className="carousel-container">
-      <Carousel infiniteLoop interval={1000}>
+      <Carousel infiniteLoop interval={3000} autoPlay>
         <div>
           <img className="carousel-imgs" src={carousel1} alt="Slide 1" />
           <p className="legend">Buy your favorite items</p>

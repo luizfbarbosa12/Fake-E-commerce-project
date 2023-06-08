@@ -1,1 +1,34 @@
 @import "../../styles/variables";
+
+.details-wrapper {
+    width: 1200px;
+    padding: $xl-padding;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid $border-color;
+    margin: 0 auto;
+    gap: 24px;
+
+
+    .price {
+        font-size: 24px;
+        color: darken($accent-color, 30%);
+        padding: $standard-padding;
+    }
+
+    .rating {
+        font-size: 18px;
+        padding: $standard-padding 0;
+    }
+
+    .product-details {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+    }
+}
+
+.product-details-image {
+    height: 100%;
+    width: 600px;
+}

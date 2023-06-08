@@ -1,9 +1,8 @@
-import { ChangeEvent, ChangeEventHandler, useContext, useEffect, useState } from "react";
+import { ChangeEvent, useContext, useEffect, useState } from "react";
 import logo from "../../../assets/logo.svg";
 import SearchInput from "../../atoms/SearchInput/SearchInput";
 import "./Header.scss";
 import { ProductsContext } from "../../../contexts/ProductsContext";
-import ClipLoader from "react-spinners/ClipLoader";
 import cart from '../../../assets/cart.svg';
 import { goToCategoryPage, goToHomePage } from "../../../Router/coordinator";
 import { useNavigate } from "react-router-dom";

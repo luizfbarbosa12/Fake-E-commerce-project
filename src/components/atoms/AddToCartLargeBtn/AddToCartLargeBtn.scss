@@ -1,0 +1,16 @@
+@import "../../../styles/variables";
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $s-margin;
+    height: 54px;
+    width: 328px;
+    border-radius: $s-margin;
+    background-color: $accent-color;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    box-shadow: 10px 10px 46px -26px rgba(0,0,0,0.75);
+}
