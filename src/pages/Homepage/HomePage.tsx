@@ -4,7 +4,9 @@ import CarouselComponent from '../../components/molecules/CarouselComponent/Caro
 import Main from '../../components/organisms/Main/Main'
 import Footer from '../../components/organisms/Footer/Footer'
 
+
 const HomePage = () => {
+ 
   return (
     <div>
         <Header/>

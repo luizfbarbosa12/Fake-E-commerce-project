@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import logo from "../../../assets/logo.svg";
 import SearchInput from "../../atoms/SearchInput/SearchInput";
 import "./Header.scss";
+import { ProductsContext } from "../../../contexts/ProductsContext";
 
 const Header = () => {
+  const {data} = useContext(ProductsContext)
+
   return (
     <header>
       <div className="logo-container">
@@ -13,12 +17,12 @@ const Header = () => {
         <ul>
           <li>
             <select>
-              <option value="" disabled selected>
-                Departments
+              <option value="" defaultValue=''>
+                Categories
               </option>
-              <option>Departments</option>
-              <option>Departments</option>
-              <option>Departments</option>
+              {data?.states?.categories.map((category: string, index: number) => {
+                return <option key={index}>{category}</option>
+              })}
             </select>
           </li>
           <li>Most Wanted</li>
