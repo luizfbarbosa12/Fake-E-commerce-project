@@ -6,7 +6,7 @@ export interface ProductsProps {
 
 export type CategoriesProps = string[];
 export interface ProductsArrayProps {
-    map(arg0: () => import("react/jsx-runtime").JSX.Element): ReactNode;
+    map(arg0: (product: ProductObjectType) => JSX.Element): ReactNode;
     data: ProductObjectType[]
 }
 

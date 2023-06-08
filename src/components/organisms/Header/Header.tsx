@@ -1,36 +1,52 @@
-import { useContext } from "react";
+import { ChangeEvent, ChangeEventHandler, useContext, useEffect, useState } from "react";
 import logo from "../../../assets/logo.svg";
 import SearchInput from "../../atoms/SearchInput/SearchInput";
 import "./Header.scss";
 import { ProductsContext } from "../../../contexts/ProductsContext";
 import ClipLoader from "react-spinners/ClipLoader";
 import cart from '../../../assets/cart.svg';
+import { goToCategoryPage, goToHomePage } from "../../../Router/coordinator";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const [selectedCategory, setSelectedCategory] = useState('')
   const { data } = useContext(ProductsContext);
+  const navigate = useNavigate()
 
-  console.log(data?.states?.categories);
+
+  const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(event.target.value)
+  }
+
+  useEffect(() => {
+    if(selectedCategory) {
+      goToCategoryPage(navigate, selectedCategory)
+    }
+  }, [selectedCategory, navigate])
+
+  const handleGoToHomepage = () => {
+    goToHomePage(navigate)
+    setSelectedCategory('')
+  }
   return (
     <header>
-      <div className="logo-container">
+      <div className="logo-container" onClick={() => handleGoToHomepage()}>
         <img src={logo} alt="Store logo" />
         <h1>Fake API Store</h1>
       </div>
       <nav>
         <ul>
           <li>
-            <select>
+            <select value={selectedCategory} onChange={(e) => handleCategoryChange(e)}>
               <option value="" defaultValue="">
                 Categories
               </option>
-              {data && data.states && data.states.categories ? (
+              {data && data.states && data.states.categories && (
                 data?.states?.categories.map(
                   (category: string, index: number) => {
                     return <option key={index}>{category}</option>;
                   }
                 )
-              ) : (
-                <ClipLoader size={150} color={"#FBAE84"} loading />
               )}
             </select>
           </li>

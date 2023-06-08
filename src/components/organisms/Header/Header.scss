@@ -12,6 +12,8 @@ header {
     display: flex;
     gap: $s-margin;
     width: 13.125rem;
+    cursor: pointer;
+   
 
     & > img {
       height: 4.75rem;
@@ -35,6 +37,7 @@ option {
   padding: $xs-padding;
   font-weight: bold;
   text-transform: capitalize;
+  cursor: pointer;
 }
 li {
   font-weight: 600;
