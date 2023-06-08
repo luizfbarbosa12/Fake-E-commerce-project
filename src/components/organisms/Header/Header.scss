@@ -1,0 +1,41 @@
+@import "../../../styles/variables";
+
+header {
+  padding: $standard-padding;
+  height: 7.25rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: $xl-margin;
+
+  .logo-container {
+    display: flex;
+    gap: $s-margin;
+    width: 13.125rem;
+
+    & > img {
+      height: 4.75rem;
+      width: 4.375rem;
+    }
+  }
+
+  nav {
+    & > ul {
+      width: 18.75rem;
+      display: flex;
+      justify-content: space-between;
+      list-style-type: none;
+    }
+  }
+}
+select, option {
+    width: 8rem;
+    font-size: 14px;
+    padding: $xs-padding;
+    font-weight: bold;
+}
+li {
+    font-weight: 600;
+    font-size: 18px;
+}
+

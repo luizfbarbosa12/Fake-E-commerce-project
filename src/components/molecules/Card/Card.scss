@@ -20,14 +20,12 @@
     transition: all 0.3s ease;
     font-size: 18px;
     font-style: italic;
-
   }
 
   .image-overlay {
     height: 18.75rem;
     width: 100%;
     cursor: pointer;
-
   }
 }
 
@@ -36,7 +34,7 @@
   height: 18.75rem;
   width: 100%;
   transition: filter 0.3s ease-in-out;
-  
+
   &:hover {
     filter: blur(4px);
   }
@@ -49,7 +47,5 @@
 .card-footer {
   display: flex;
   justify-content: space-between;
-  padding: $xs-padding $s-padding;
+  padding: $s-padding;
 }
-
-

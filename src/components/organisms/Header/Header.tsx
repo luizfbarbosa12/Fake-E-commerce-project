@@ -1,20 +1,30 @@
-import React from "react";
+import logo from "../../../assets/logo.svg";
+import SearchInput from "../../atoms/SearchInput/SearchInput";
+import "./Header.scss";
 
 const Header = () => {
   return (
     <header>
-      <img src="" alt="" />
-      <div>
-        <nav>
-          <ul>
-            <li><select>Departments</select></li>
-            <li>Most Wanted</li>
-          </ul>
-        </nav>
+      <div className="logo-container">
+        <img src={logo} alt="Store logo" />
+        <h1>Fake API Store</h1>
       </div>
-
-      <input type="search" name="" id="" />
-      <img src="" alt="" />
+      <nav>
+        <ul>
+          <li>
+            <select>
+              <option value="" disabled selected>
+                Departments
+              </option>
+              <option>Departments</option>
+              <option>Departments</option>
+              <option>Departments</option>
+            </select>
+          </li>
+          <li>Most Wanted</li>
+        </ul>
+      </nav>
+      <SearchInput/>
     </header>
   );
 };
