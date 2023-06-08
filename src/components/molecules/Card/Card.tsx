@@ -1,14 +1,18 @@
 import "./card.scss";
 import RightArrow from "../../../assets/right-arrow.svg";
 import AddToCartBtn from "../../atoms/AddToCartBtn/AddToCartBtn";
+import {ProductObjectType} from '../../../contexts/Products.types'
 
-const Card = () => {
+interface CardProps {
+  product: ProductObjectType
+}
+const Card = ({product}: CardProps) => {
   return (
     <div className="card-wrapper">
       <div className="image-overlay">
         <img
           className="product-image"
-          src="https://picsum.photos/275/300"
+          src={product.image}
           alt="product image"
         />
       </div>
@@ -18,8 +22,8 @@ const Card = () => {
 
       <div className="card-footer">
         <div className="product-data">
-          <h3>Product name</h3>
-          <p>$58,50</p>
+          <h3>{product.title}</h3>
+          <p>${product.price?.toFixed(2)}</p>
         </div>
         <AddToCartBtn/>
       </div>

@@ -2,9 +2,11 @@
 
 .card-wrapper {
   width: 17.25rem;
+  min-height: 457px;
   position: relative;
   overflow: hidden;
   border-radius: $s-border;
+  border: 1px solid $border-color;
 
   .see-details {
     position: absolute;
@@ -48,4 +50,10 @@
   display: flex;
   justify-content: space-between;
   padding: $s-padding;
+}
+
+h3 {
+  padding: $standard-padding;
+  width: 200px;
+  white-space: wrap; 
 }

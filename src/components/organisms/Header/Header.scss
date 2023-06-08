@@ -28,14 +28,25 @@ header {
     }
   }
 }
-select, option {
-    width: 8rem;
-    font-size: 14px;
-    padding: $xs-padding;
-    font-weight: bold;
+select,
+option {
+  width: 8rem;
+  font-size: 14px;
+  padding: $xs-padding;
+  font-weight: bold;
+  text-transform: capitalize;
 }
 li {
-    font-weight: 600;
-    font-size: 18px;
+  font-weight: 600;
+  font-size: 18px;
 }
 
+.cart-container {
+  padding: $standard-padding;
+  cursor: pointer;
+
+  & > img {
+    height: 24px;
+    width: 24px;
+  }
+}

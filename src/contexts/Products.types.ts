@@ -4,11 +4,10 @@ export interface ProductsProps {
     children?: ReactNode;
 }
 
-export interface CategoriesProps {
-    data: string[]
-}
+export type CategoriesProps = string[];
 export interface ProductsArrayProps {
-    data: ProductObjectType
+    map(arg0: () => import("react/jsx-runtime").JSX.Element): ReactNode;
+    data: ProductObjectType[]
 }
 
 export type ProductObjectType = {
