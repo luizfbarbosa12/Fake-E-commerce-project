@@ -6,8 +6,11 @@ import Header from "../components/organisms/Header/Header";
 import ProductDetailsPage from "../pages/ProductDetailsPage/ProductDetailsPage";
 import CartContainer from "../components/organisms/CartContainer/CartContainer";
 import CartPage from "../pages/CartPage/CartPage";
+import { useContext } from "react";
+import { ProductsContext } from "../contexts/ProductsContext";
 
 const Router = () => {
+  const {data} = useContext(ProductsContext)
   return (
     <BrowserRouter>
       <Header />
@@ -17,7 +20,7 @@ const Router = () => {
         <Route path="/productDetails/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<CartPage />} />
       </Routes>
-      <CartContainer/>
+      {data?.states?.cart?.length > 0 && <CartContainer/>}
       <Footer />
     </BrowserRouter>
   );
