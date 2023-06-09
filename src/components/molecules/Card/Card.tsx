@@ -4,24 +4,15 @@ import AddToCartBtn from "../../atoms/AddToCartBtn/AddToCartBtn";
 import { ProductObjectType } from "../../../contexts/Products.types";
 import { goToProductDetails } from "../../../Router/coordinator";
 import { useNavigate } from "react-router-dom";
-import { ProductsContext } from "../../../contexts/ProductsContext";
-import { useContext } from "react";
+import useCart from "../../../Hooks/useCart";
 
 interface CardProps {
   product: ProductObjectType;
 }
 const Card = ({ product }: CardProps) => {
   const navigate = useNavigate();
-  const {data} = useContext(ProductsContext)
-  
-  const addToCart = (product: ProductObjectType) => {
-    const isInCart = data.states?.cart.some((item) => {
-      return item.id === product.id
-    })
-    if(data?.setters?.setCart)
-    if(!isInCart) data?.setters?.setCart([...(data?.states?.cart || []), product])
-    
-  }
+  const { addToCart } = useCart();
+
   return (
     <div className="card-wrapper">
       <div className="image-overlay">

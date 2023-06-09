@@ -4,7 +4,7 @@ import SearchInput from "../../atoms/SearchInput/SearchInput";
 import "./Header.scss";
 import { ProductsContext } from "../../../contexts/ProductsContext";
 import cart from '../../../assets/cart.svg';
-import { goToCategoryPage, goToHomePage } from "../../../Router/coordinator";
+import { goToCartPage, goToCategoryPage, goToHomePage } from "../../../Router/coordinator";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
@@ -26,6 +26,11 @@ const Header = () => {
   const handleGoToHomepage = () => {
     goToHomePage(navigate)
     setSelectedCategory('')
+  }
+
+  const handleGoToCartPage = () => {
+    setSelectedCategory('')
+    goToCartPage(navigate)
   }
   return (
     <header>
@@ -53,8 +58,8 @@ const Header = () => {
         </ul>
       </nav>
       <SearchInput />
-      <div className="cart-container">
-        <img src={cart} alt="" />
+      <div onClick={() => handleGoToCartPage()} className="cart-container">
+        <img src={cart} alt="cart icon" />
       </div>
     </header>
   );

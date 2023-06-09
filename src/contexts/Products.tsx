@@ -17,6 +17,7 @@ const Products = ({ children }: ProductsProps) => {
     undefined
   );
   const [cart, setCart] = useState<ProductObjectType[]>([]);
+  const [cartTotalPrice, setCartTotalPrice] = useState(0);
 
   const getAllProducts = () => {
     axios
@@ -41,8 +42,8 @@ const Products = ({ children }: ProductsProps) => {
     getCategories();
   }, []);
 
-  const states = { products, categories, cart };
-  const setters = { setCart };
+  const states = { products, categories, cart, cartTotalPrice };
+  const setters = { setProducts, setCart, setCartTotalPrice };
   const data: ContextTypes = { data: { states, setters } };
   return (
     <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>

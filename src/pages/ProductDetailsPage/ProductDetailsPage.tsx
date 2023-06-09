@@ -6,17 +6,18 @@ import { useParams } from "react-router-dom";
 import StarRatings from "react-star-ratings";
 import { ProductObjectType } from "../../contexts/Products.types";
 import AddToCartLargeBtn from "../../components/atoms/AddToCartLargeBtn";
+import useCart from "../../Hooks/useCart";
 
 const ProductDetailsPage = () => {
   const [singleProduct, setSingleProduct] = useState<ProductObjectType>();
   const params = useParams();
+  const { addToCart } = useCart();
 
   const getASingleProduct = (id: number) => {
     axios
       .get(`${BASE_URL}/${id}`)
       .then((res) => {
         setSingleProduct(res.data);
-        console.log(res);
       })
       .catch((err) => console.log(err));
   };
@@ -24,7 +25,11 @@ const ProductDetailsPage = () => {
   useEffect(() => getASingleProduct(Number(params.id)), [params.id]);
   return (
     <div className="details-wrapper">
-      <img className="product-details-image" src={singleProduct?.image} alt="" />
+      <img
+        className="product-details-image"
+        src={singleProduct?.image}
+        alt=""
+      />
       <div className="product-details">
         <div>
           <h1>{singleProduct?.title}</h1>
@@ -40,7 +45,7 @@ const ProductDetailsPage = () => {
             starRatedColor={"#FBAE84"}
           />
         </div>
-        <AddToCartLargeBtn/>
+        <AddToCartLargeBtn onClick={() => addToCart(singleProduct)} />
       </div>
     </div>
   );

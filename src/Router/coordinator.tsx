@@ -15,5 +15,5 @@ export const goToProductDetails = (navigate: NavigateFunctionType, id: number | 
 }
 
 export const goToCartPage = (navigate: NavigateFunctionType) => {
-    navigate("/cart")
+    navigate("/cart", {replace: true})
 }

@@ -7,7 +7,8 @@ export interface ProductsProps {
 export type CategoriesProps = string[];
 export interface ProductsArrayProps {
     map(arg0: (product: ProductObjectType) => JSX.Element): ReactNode;
-    data: ProductObjectType[]
+    data?: ProductObjectType[];
+    filter(arg0: (product: ProductObjectType) => JSX.Element): ReactNode;
 }
 
 export type ProductObjectType = {

@@ -9,7 +9,9 @@ const CartContainer = () => {
   const [quantities, setQuantities] = useState({});
   const { data } = useContext(ProductsContext);
   const navigate = useNavigate();
+  console.log(data?.states?.cartTotalPrice)
 
+  //try to fix the useCartCalculator() hook later
   useEffect(() => {
     const cartItems = data?.states?.cart ?? [];
     const updatedQuantities = cartItems.reduce((acc, item) => {
@@ -20,11 +22,14 @@ const CartContainer = () => {
 
   const calculateTotal = () => {
     const cartItems = data?.states?.cart ?? [];
-    return cartItems.reduce(
+    const total = cartItems.reduce(
       (sum, product) =>
         sum + (product.price || 0) * (quantities[product.id] || 1),
       0
     );
+    if (data?.setters?.setCartTotalPrice)
+      data?.setters?.setCartTotalPrice(total); // Update the state with the calculated total
+    return total;
   };
 
   const handleQuantityChange = (productId: number, quantity: number) => {
@@ -36,10 +41,10 @@ const CartContainer = () => {
 
   const removeItemFromCart = (id: number) => {
     const newCart = (data?.states?.cart || []).filter((item) => {
-        return item.id !== id
-    })
-    data?.setters?.setCart(newCart)
-  }
+      return item.id !== id;
+    });
+    if (data?.setters?.setCart) data?.setters?.setCart(newCart);
+  };
   return (
     <aside className="cart-wrapper">
       <div className="cart-header">
@@ -79,7 +84,10 @@ const CartContainer = () => {
                 <option value="8">8</option>
                 <option value="9">9</option>
               </select>
-              <button onClick={() => removeItemFromCart(item.id)} className="delete-btn">
+              <button
+                onClick={() => removeItemFromCart(item.id)}
+                className="delete-btn"
+              >
                 <img className="delete-item" src={trash} alt="delete" />
               </button>
             </div>

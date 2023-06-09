@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+
+.cart-page-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: $standard-margin;
+    padding: $xl-padding;
+}
+
+.h1-margin {
+    margin: $xl-margin;
+}
