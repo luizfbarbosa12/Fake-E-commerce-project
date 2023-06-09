@@ -36,8 +36,8 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <select value={selectedCategory} onChange={(e) => handleCategoryChange(e)}>
-              <option value="" defaultValue="">
+            <select className="header-select" value={selectedCategory} onChange={(e) => handleCategoryChange(e)}>
+              <option className="header-select" value="" defaultValue="">
                 Categories
               </option>
               {data && data.states && data.states.categories && (

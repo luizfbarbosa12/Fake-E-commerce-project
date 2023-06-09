@@ -4,6 +4,7 @@ import { BASE_URL } from "../constants/URL";
 import axios from "axios";
 import {
   CategoriesProps,
+  ProductObjectType,
   ProductsArrayProps,
   ProductsProps,
 } from "./Products.types";
@@ -15,15 +16,16 @@ const Products = ({ children }: ProductsProps) => {
   const [categories, setCategories] = useState<CategoriesProps | undefined>(
     undefined
   );
+  const [cart, setCart] = useState<ProductObjectType[]>([]);
 
   const getAllProducts = () => {
     axios
-    .get(`${BASE_URL}`)
-    .then((res) => {
-      setProducts(res.data);
-    })
-    .catch((err) => console.error(err));
-  }
+      .get(`${BASE_URL}`)
+      .then((res) => {
+        setProducts(res.data);
+      })
+      .catch((err) => console.error(err));
+  };
 
   const getCategories = () => {
     axios
@@ -35,12 +37,13 @@ const Products = ({ children }: ProductsProps) => {
   };
 
   useEffect(() => {
-    getAllProducts()
-    getCategories()
+    getAllProducts();
+    getCategories();
   }, []);
 
-  const states = { products, categories };
-  const data: ContextTypes = { data: { states } };
+  const states = { products, categories, cart };
+  const setters = { setCart };
+  const data: ContextTypes = { data: { states, setters } };
   return (
     <ProductsContext.Provider value={data}>{children}</ProductsContext.Provider>
   );

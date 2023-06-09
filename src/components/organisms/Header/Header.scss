@@ -30,8 +30,8 @@ header {
     }
   }
 }
-select,
-option {
+
+.header-select {
   width: 8rem;
   font-size: 14px;
   padding: $xs-padding;
@@ -47,6 +47,7 @@ li {
 .cart-container {
   padding: $standard-padding;
   cursor: pointer;
+  margin-right: 50px;
 
   & > img {
     height: 24px;

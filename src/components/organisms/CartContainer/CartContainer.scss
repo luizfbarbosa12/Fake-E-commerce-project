@@ -1,0 +1,81 @@
+@import "../../../styles/variables";
+
+.cart-wrapper {
+    height: 100%;
+    width: 180px;
+    border: 5px solid $border-color;
+    position: absolute;
+    right: 0;
+    top: 0;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    padding: $standard-padding;
+    gap: 56px;
+    overflow-y: scroll;
+    background-color: $border-color;
+
+    .cart-header {
+        display: flex;
+        flex-direction: column;
+        gap: $xl-margin;
+        & > div {
+            display: flex;
+            gap: $standard-margin;
+            font-weight: bold;
+        }
+        & > h4 {
+            font-size: 24px;
+        }
+    }
+
+    .cart-cart-footer {
+        display: flex;
+        gap: $standard-margin;
+
+        .delete-btn {
+            background-color: $accent-color;
+            border-radius: $xs-border;
+            border: none;
+            cursor: pointer;
+        }
+
+        .delete-item {
+            height: 26px;
+            width: 26px;
+        }
+    }
+}
+
+.price-and-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: $s-margin;
+}
+
+.cart-item {
+    width: min-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: $standard-padding;
+    gap: $s-margin;
+    border: 1px solid $border-color;
+
+    .cart-image {
+        height: 100px;
+        width: 100px;
+    }
+}
+
+
+.go-to-cart-btn {
+    border-radius: $standard-border;
+    border: 1px solid $border-color;
+    padding: $xs-padding;
+    cursor: pointer;
+    box-shadow: 6px 6px 15px -7px rgba(0, 0, 0, 0.75);
+
+}

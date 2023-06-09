@@ -28,7 +28,7 @@ const ProductDetailsPage = () => {
       <div className="product-details">
         <div>
           <h1>{singleProduct?.title}</h1>
-          <p className="price">${singleProduct?.price}</p>
+          <p className="price">${singleProduct?.price?.toFixed(2)}</p>
           <p>{singleProduct?.description}</p>
         </div>
         <div>

@@ -1,20 +1,29 @@
 import { createContext } from "react";
-import { CategoriesProps, ProductsArrayProps } from "./Products.types";
+import {
+  CategoriesProps,
+  ProductObjectType,
+  ProductsArrayProps,
+} from "./Products.types";
 
 export interface ContextTypes {
-    data?: {
-        states?: {
-            products?: ProductsArrayProps,
-            categories?: CategoriesProps
-        }
-    }
-  }
+  data?: {
+    states?: {
+      products?: ProductsArrayProps;
+      categories?: CategoriesProps;
+      cart?: ProductObjectType[];
+    };
+    setters?: {
+      setCart?: React.Dispatch<React.SetStateAction<ProductObjectType[]>>;
+    };
+  };
+}
 
 export const ProductsContext = createContext<ContextTypes>({
-    data: {
-        states: {
-            products: undefined,
-            categories: undefined
-        }
-    }
+  data: {
+    states: {
+      products: undefined,
+      categories: undefined,
+      cart: [],
+    },
+  },
 });
