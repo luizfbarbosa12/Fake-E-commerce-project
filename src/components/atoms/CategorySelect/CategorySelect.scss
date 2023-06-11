@@ -1,0 +1,14 @@
+@import "../../../styles/variables";
+
+.header-select {
+    width: 8rem;
+    font-size: 14px;
+    padding: $xs-padding;
+    font-weight: bold;
+    text-transform: capitalize;
+    cursor: pointer;
+  }
+  li {
+    font-weight: 600;
+    font-size: 18px;
+  }

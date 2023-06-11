@@ -9,7 +9,6 @@ const CartContainer = () => {
   const [quantities, setQuantities] = useState({});
   const { data } = useContext(ProductsContext);
   const navigate = useNavigate();
-  console.log(data?.states?.cartTotalPrice)
 
   //try to fix the useCartCalculator() hook later
   useEffect(() => {
@@ -74,15 +73,11 @@ const CartContainer = () => {
                   handleQuantityChange(item.id, parseInt(e.target.value))
                 }
               >
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((value) => (
+                  <option key={value} value={value}>
+                    {value}
+                  </option>
+                ))}
               </select>
               <button
                 onClick={() => removeItemFromCart(item.id)}

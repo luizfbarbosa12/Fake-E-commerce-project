@@ -1,21 +1,16 @@
-import { ChangeEvent, useContext, useEffect, useState } from "react";
-import logo from "../../../assets/logo.svg";
-import SearchInput from "../../atoms/SearchInput/SearchInput";
-import "./Header.scss";
-import { ProductsContext } from "../../../contexts/ProductsContext";
-import cart from '../../../assets/cart.svg';
-import { goToCartPage, goToCategoryPage, goToHomePage } from "../../../Router/coordinator";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import logo from "../../../assets/logo.svg";
+import cart from '../../../assets/cart.svg';
+import "./Header.scss";
+import SearchInput from "../../atoms/SearchInput/SearchInput";
+import CategorySelect from "../../atoms/CategorySelect/CategorySelect";
+import { goToCartPage, goToCategoryPage, goToHomePage } from "../../../Router/coordinator";
+
 
 const Header = () => {
   const [selectedCategory, setSelectedCategory] = useState('')
-  const { data } = useContext(ProductsContext);
   const navigate = useNavigate()
-
-
-  const handleCategoryChange = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSelectedCategory(event.target.value)
-  }
 
   useEffect(() => {
     if(selectedCategory) {
@@ -41,18 +36,7 @@ const Header = () => {
       <nav>
         <ul>
           <li>
-            <select className="header-select" value={selectedCategory} onChange={(e) => handleCategoryChange(e)}>
-              <option className="header-select" value="" defaultValue="">
-                Categories
-              </option>
-              {data && data.states && data.states.categories && (
-                data?.states?.categories.map(
-                  (category: string, index: number) => {
-                    return <option key={index}>{category}</option>;
-                  }
-                )
-              )}
-            </select>
+            <CategorySelect selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} />
           </li>
           <li>Most Wanted</li>
         </ul>
