@@ -8,6 +8,7 @@ import CartContainer from "../components/organisms/CartContainer/CartContainer";
 import CartPage from "../pages/CartPage/CartPage";
 import { useContext } from "react";
 import { ProductsContext } from "../contexts/ProductsContext";
+import ErrorPage from "../pages/ErrorPage";
 
 const Router = () => {
   const {data} = useContext(ProductsContext)
@@ -19,6 +20,7 @@ const Router = () => {
         <Route path="/:category" element={<CategoryPage />} />
         <Route path="/productDetails/:id" element={<ProductDetailsPage />} />
         <Route path="/cart" element={<CartPage />} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
       {(data?.states?.cart?.length ?? 0) > 0 && <CartContainer/>}
       <Footer />

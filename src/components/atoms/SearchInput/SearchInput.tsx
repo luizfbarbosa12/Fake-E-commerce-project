@@ -7,8 +7,8 @@ import { ProductObjectType } from "../../../contexts/Products.types";
 const SearchInput = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const { data } = useContext(ProductsContext);
-  console.log(data?.states?.products);
-  // Filtered products based on search query
+
+
   const handleSearchQueryChange = (value: string) => {
     setSearchQuery(value);
     filterProducts(value);

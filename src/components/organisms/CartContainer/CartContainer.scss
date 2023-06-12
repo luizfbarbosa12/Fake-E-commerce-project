@@ -32,18 +32,6 @@
     .cart-cart-footer {
         display: flex;
         gap: $standard-margin;
-
-        .delete-btn {
-            background-color: $accent-color;
-            border-radius: $xs-border;
-            border: none;
-            cursor: pointer;
-        }
-
-        .delete-item {
-            height: 26px;
-            width: 26px;
-        }
     }
 }
 
