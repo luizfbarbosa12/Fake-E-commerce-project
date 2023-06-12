@@ -5,39 +5,14 @@ import trash from "../../../assets/trash.svg";
 import { goToCartPage } from "../../../Router/coordinator";
 import { useNavigate } from "react-router-dom";
 import { ProductObjectType } from "../../../contexts/Products.types";
+import useCartCalculator from "../../../Hooks/useCartCalculator";
 const CartContainer = () => {
-  const [quantities, setQuantities] = useState({});
+  // const [quantities, setQuantities] = useState({});
   const { data } = useContext(ProductsContext);
   const navigate = useNavigate();
+  const { quantities, calculateTotal, handleQuantityChange } = useCartCalculator(data?.states && data?.states?.cart);
 
-  //try to fix the useCartCalculator() hook later
-  useEffect(() => {
-    const cartItems = data?.states?.cart ?? [];
-    const updatedQuantities = cartItems.reduce((acc, item) => {
-      return { ...acc, [item.id]: quantities[item.id] || 1 };
-    }, {});
-    setQuantities(updatedQuantities);
-  }, [data?.states?.cart]);
-
-  const calculateTotal = () => {
-    const cartItems = data?.states?.cart ?? [];
-    const total = cartItems.reduce(
-      (sum, product) =>
-        sum + (product.price || 0) * (quantities[product.id] || 1),
-      0
-    );
-    if (data?.setters?.setCartTotalPrice)
-      data?.setters?.setCartTotalPrice(total); // Update the state with the calculated total
-    return total;
-  };
-
-  const handleQuantityChange = (productId: number, quantity: number) => {
-    setQuantities((prevQuantities) => ({
-      ...prevQuantities,
-      [productId]: quantity,
-    }));
-  };
-
+  
   const removeItemFromCart = (id: number) => {
     const newCart = (data?.states?.cart || []).filter((item) => {
       return item.id !== id;

@@ -22,7 +22,7 @@ const CartPage = () => {
           <div className="cart-page-wrapper">
             {data?.states?.cart?.map((item) => {
               return (
-                <CartCard product={item}/>
+                <CartCard key={item.id} product={item}/>
               );
             })}
             <h2>Total Price</h2>

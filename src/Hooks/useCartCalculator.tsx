@@ -1,39 +1,32 @@
 import { useEffect, useState } from "react";
 import { ProductObjectType } from "../contexts/Products.types";
 
-type useCartCalculatorProps = {
-  cartItems: ProductObjectType[] | undefined;
-};
+interface CartCalculatorHook {
+  quantities: Record<number, number>;
+  calculateTotal: () => number;
+  handleQuantityChange: (productId: number, quantity: number) => void;
+}
 
-const useCartCalculator = ({ cartItems }: useCartCalculatorProps) => {
-  const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
-  const [totalPrice, setTotalPrice] = useState(0);
-
-  useEffect(() => {
-    const updateQuantities = async () => {
-      const updatedQuantities = cartItems?.reduce(async (accPromise, item) => {
-        const acc = await accPromise;
-        return { ...acc, [item.id]: quantities[item.id] || 1 };
-      }, Promise.resolve({}));
-      setQuantities(await updatedQuantities);
-    };
-
-    updateQuantities();
-  }, [cartItems, quantities]);
+const useCartCalculator = (cartItems: ProductObjectType[]): CartCalculatorHook => {
+  const [quantities, setQuantities] = useState<Record<number, number>>({});
 
   useEffect(() => {
-    const calculateTotal = async () => {
-      const calculatedTotal = await cartItems?.reduce(async (sumPromise, product) => {
-        const sum = await sumPromise;
-        return sum + (product.price || 0) * (quantities[product.id] || 1);
-      }, Promise.resolve(0));
-      setTotalPrice(calculatedTotal || 0);
-    };
+    const updatedQuantities = cartItems.reduce((acc, item) => {
+      return { ...acc, [item.id]: quantities[item.id] || 1 };
+    }, {});
+    setQuantities(updatedQuantities);
+  }, [cartItems]);
 
-    calculateTotal();
-  }, [cartItems, quantities]);
+  const calculateTotal = () => {
+    const total = cartItems.reduce(
+      (sum, product) =>
+        sum + (product.price || 0) * (quantities[product.id] || 1),
+      0
+    );
+    return total;
+  };
 
-  const handleQuantityChange = async (productId: number, quantity: number) => {
+  const handleQuantityChange = (productId: number, quantity: number) => {
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
       [productId]: quantity,
@@ -42,8 +35,8 @@ const useCartCalculator = ({ cartItems }: useCartCalculatorProps) => {
 
   return {
     quantities,
-    totalPrice,
-    handleQuantityChange,
+    calculateTotal,
+    handleQuantityChange
   };
 };
 
